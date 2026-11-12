@@ -24,11 +24,11 @@ def solve_gauss(A, b):
             for j in range(k, n+1):
                 M[i][j] -= factor * M[k][j]
                 
-    x = [0.0] * n
+    a = [0.0] * n
     for i in range(n-1, -1, -1):
-        s = sum(M[i][j] * x[j] for j in range(i+1, n))
-        x[i] = (M[i][n] - s) / M[i][i]
-    return x
+        s = sum(M[i][j] * a[j] for j in range(i+1, n))
+        a[i] = (M[i][n] - s) / M[i][i]
+    return a
 
 
 def mnk_fit(x, y, degree):
@@ -53,8 +53,6 @@ def poly_to_string(coefs):
     parts = []
     for i in range(len(coefs) - 1, -1, -1):
         a = coefs[i]
-        if abs(a) < 1e-5:
-            continue
         term = f"{abs(a):.4f}"
         if i > 0:
             term += "x" if i == 1 else f"x^{i}"
@@ -77,7 +75,7 @@ def main():
 
     print("1. Исходные данные")
     print(f"{'i':>2} | {'x_i':>8} | {'y_i':>8}")
-    print("-" * 23)
+    print("-" * 24)
     for i in range(len(x)):
         print(f"{i:2d} | {x[i]:8.4f} | {y[i]:8.4f}")
     print()
@@ -94,7 +92,7 @@ def main():
         mse_list.append(mse)
 
         print(f"\nМногочлен {d}-й степени")
-        print("Коэффициенты (a0, a1, ...):")
+        print("Коэффициенты (a_0, a_1, ...):")
         for i, c in enumerate(coefs):
             print(f"  a_{i} = {c: .6f}")
         
