@@ -80,7 +80,7 @@ def main():
         print(f"{i:2d} | {x[i]:8.4f} | {y[i]:8.4f}")
     print()
 
-    degrees = [1, 2, 3]
+    degrees = [1, 2, 3, 5]
     coefs_list = []
     mse_list = []
 
@@ -112,8 +112,8 @@ def main():
     plt.scatter(x, y, color='black', zorder=5, s=50, label='Исходные точки')
     
     x_plot = np.linspace(min(x)-0.5, max(x)+0.5, 400)
-    colors = ['green', 'blue', 'red']
-    styles = ['--', '-.', ':']
+    colors = ['green', 'blue', 'red', 'purple']
+    styles = ['--', '-.', ':', '-']
     
     for idx, d in enumerate(degrees):
         y_plot = [poly_eval(coefs_list[idx], xi) for xi in x_plot]
