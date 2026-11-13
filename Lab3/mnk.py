@@ -104,6 +104,8 @@ def main():
     print(f"MSE_1 = {mse_list[0]:.6e}")
     print(f"MSE_2 = {mse_list[1]:.6e}")
     print(f"MSE_3 = {mse_list[2]:.6e}")
+    print(f"MSE_5 = {mse_list[3]:.6e}")
+
     
     best_degree = degrees[np.argmin(mse_list)]
     print(f"Лучший результат показал многочлен {best_degree}-й степени")
